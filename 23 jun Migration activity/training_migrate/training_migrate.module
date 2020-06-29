@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains training_migrate.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function training_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the training_migrate module.
+    case 'help.page.training_migrate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Developed by Vijay for Migration') . '</p>';
+      return $output;
+
+    default:
+  }
+}

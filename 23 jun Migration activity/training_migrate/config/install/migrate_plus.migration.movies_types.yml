@@ -1,0 +1,13 @@
+id: movies_types
+label: Movies Type
+migration_group: training_migrate
+source:
+  plugin: movies_types
+  key: default
+destination:
+  plugin: entity:taxonomy_term
+process:
+  vid:
+    plugin: default_value
+    default_value: tags
+  name: name

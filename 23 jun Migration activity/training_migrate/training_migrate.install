@@ -1,0 +1,115 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ *
+ * It is good to clean up after ourselves.
+ *
+ * @ingroup tablesort_example
+ */
+function training_migrate_uninstall() {
+  $db_connection = \Drupal::database();
+  $db_connection->schema()->dropTable('movies');
+  $db_connection->schema()->dropTable('movies_type');
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * @ingroup tablesort_example
+ */
+function training_migrate_schema() {
+   $schema['movies'] = [
+    'description' => 'The base table for movies.',
+    'fields' => [
+      'id' => [
+        'description' => 'Storing id value.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => 'This column simply holds movies name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'description' => [
+        'description' => 'This column simply discription of movies',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  $schema['movies_type'] = [
+    'description' => 'The base table for movies genres.',
+    'fields' => [
+      'id' => [
+        'description' => 'Storing id value.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'movies_id' => [
+        'description' => 'This column simply holds movies id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'name' => [
+        'description' => 'This column simply holds name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      
+    ],
+    'primary key' => array('id'),
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ *
+ */
+function training_migrate_install() {
+  // Add a default entry.
+  $entries = [
+    [
+      'name' => 'DDLG',
+      'description' => 'DDLG is my feverate one movies',
+    ],
+    [
+      'name' => 'KKHH',
+      'description' => 'SRK is best movies',
+    ],
+    [
+      'name' => 'Mohabte',
+      'description' => 'ABHi best film',
+    ]
+  ];
+  $connection = \Drupal::database();
+  foreach ($entries as $entry) {
+    $connection->insert('movies')->fields($entry)->execute();
+  }
+
+  $entries = [
+    [
+      'movies_id' => '1',
+      'name' => 'Comedy',
+    ],
+    [
+      'movies_id' => '1',
+      'name' => 'Crime',
+    ],
+    [
+      'movies_id' => '2',
+      'name' => 'General',
+    ]
+  ];
+  foreach ($entries as $entry) {
+    $connection->insert('movies_type')->fields($entry)->execute();
+  }
+}

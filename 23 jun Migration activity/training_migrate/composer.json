@@ -1,0 +1,13 @@
+{
+    "name": "training_migrate",
+    "type": "drupal-module",
+    "description": "Developed by Vijay for Migration",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/training_migrate",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/training_migrate",
+        "source": "http://cgit.drupalcode.org/training_migrate",
+    },
+}
