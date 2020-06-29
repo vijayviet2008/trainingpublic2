@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains weekendactivity26jun.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function weekendactivity26jun_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the weekendactivity26jun module.
+    case 'help.page.weekendactivity26jun':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}

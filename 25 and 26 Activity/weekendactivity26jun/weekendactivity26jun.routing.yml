@@ -1,0 +1,15 @@
+weekendactivity26jun.userinfoform:
+  path: '/userinfo/form'
+  defaults:
+    _form: '\Drupal\weekendactivity26jun\Form\Userinfoform'
+    _title: 'User info form'
+  requirements:
+    _access: 'TRUE'
+
+weekendactivity26jun.config_info_controller_hello:
+  path: '/weekendactivity26jun/all/config'
+  defaults:
+    _controller: '\Drupal\weekendactivity26jun\Controller\ConfigInfoController::allSystemConfig'
+    _title: 'getAllCongfig'
+  requirements:
+    _permission: 'access content'

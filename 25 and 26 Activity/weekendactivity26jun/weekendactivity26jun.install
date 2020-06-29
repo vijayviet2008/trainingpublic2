@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ *
+ * It is good to clean up after ourselves.
+ *
+ * @ingroup tablesort_example
+ */
+function weekendactivity26jun_uninstall() {
+  $db_connection = \Drupal::database();
+  $db_connection->schema()->dropTable('userinfo');
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * @ingroup tablesort_example
+ */
+function weekendactivity26jun_schema() {
+   $schema['userinfo'] = [
+    'description' => 'The base table for movies.',
+    'fields' => [
+      'id' => [
+        'description' => 'Storing id value.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'first_name' => [
+        'description' => 'This column simply holds first name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'last_name' => [
+        'description' => 'This column simply holds last name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'bio' => [
+        'description' => 'This column simply discription of bio',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'gender' => [
+        'description' => 'This column simply holds gender',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => FALSE,
+      ],
+      'interests' => [
+        'description' => 'This column simply holds interests of user',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => FALSE,
+      ],
+    ],
+
+    'primary key' => ['id'],
+  ];
+  
+  return $schema;
+}
